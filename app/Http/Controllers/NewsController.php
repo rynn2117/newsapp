@@ -33,4 +33,24 @@ class NewsController extends Controller
         }
         
     }
+    public function berita()
+    {
+        $base_url = "https://berita-indo-api.vercel.app/v1/cnn-news/";
+        $client = new Client();
+        $indexNews = [];
+        $response = $client->get("{$base_url}");
+        $data = json_decode($response->getBody(), true);
+                if (isset($data['data'])) {
+                    $indexNews = array_merge($indexNews, $data['data']);
+                }
+            
+            // Tampilkan hasil (bisa dikembalikan sebagai JSON atau dikirim ke view)
+            return view('news.berita', ['news'=>$indexNews]);
+        
+    }
+    public function profil()
+    {
+
+    }
+    // function lainnya
 }
