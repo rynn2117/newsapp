@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Rivandi Ismanto',
             'email' => 'test@gmail.com',
             'password' => Hash::make('test123'),
-            'fav_categories' => ['teknologi']
+            'fav_categories' => ['nasional']
         ]);
     }
 }
