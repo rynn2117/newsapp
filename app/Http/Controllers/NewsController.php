@@ -20,15 +20,15 @@ class NewsController extends Controller
                 $response = $client->get("{$base_url}{$category}");
                 $data = json_decode($response->getBody(), true);
                 if (isset($data['data'])) {
-                    $allNews = array_merge($indexNews, $data['data']);
+                    $indexNews = array_merge($indexNews, $data['data']);
                 }
             }
 
             // Tampilkan hasil (bisa dikembalikan sebagai JSON atau dikirim ke view)
-            return response()->json($allNews);
+            return view('news.beranda', ['news'=>$indexNews]);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
-        return view('news.beranda', compact('news'));
+        
     }
 }
