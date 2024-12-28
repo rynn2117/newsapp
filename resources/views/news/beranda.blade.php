@@ -17,8 +17,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="{{ route('news.beranda') }}">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{{ route('news.berita') }}">Berita</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="{{ route('news.profil') }}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link " href="{{ route('news.berita') }}">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link " href="{{ route('profile.edit') }}">Profile</a></li>
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">
                             @csrf

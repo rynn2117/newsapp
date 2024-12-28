@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\UserController;
 
 // Login
 Route::middleware('guest')->group(function (){
@@ -15,6 +16,10 @@ Route::middleware('guest')->group(function (){
 Route::middleware('CheckLogin')->group(function (){
     Route::get('/beranda', [NewsController::class, 'beranda'])->name('news.beranda');
     Route::get('/berita', [NewsController::class, 'berita'])->name('news.berita');
-    Route::get('/profil', [NewsController::class, 'profil'])->name('news.profil');
     Route::post('/logout', [AuthController::class,'logout'])->name('logout');
+    Route::get('/profile', [UserController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile/update', [UserController::class, 'update'])->name('profile.update');
+
 });
+
+
