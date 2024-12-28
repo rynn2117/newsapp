@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class NewsController extends Controller
 {   
     public function beranda(){
-        $user = User::findorfail(1);
+        
+        $user = Auth::user();
         $categories = $user->fav_categories;
         $base_url = "https://berita-indo-api.vercel.app/v1/cnn-news/";
         $client = new Client();

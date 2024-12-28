@@ -38,6 +38,9 @@
             <input type="password" name="password" id="password" required>
         </div>
         <div>
+            Dont have account?<a href="{{ route('register.index') }}">Register Now</a>
+        </div>
+        <div>
             <button type="submit">Login</button>
         </div>
     </form>

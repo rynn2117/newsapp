@@ -8,6 +8,8 @@ use App\Http\Controllers\NewsController;
 Route::middleware('guest')->group(function (){
     Route::get('/', [AuthController::class, 'index'])->name('login.index');
     Route::post('/login', [AuthController::class, 'login'])->name('login.authenticate');
+    Route::get('/register', [AuthController::class, 'register'])->name('register.index');
+    Route::post('/register', [AuthController::class, 'registerProcess'])->name('register.process');
 });
 
 Route::middleware('CheckLogin')->group(function (){
