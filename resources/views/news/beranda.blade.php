@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,12 +17,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link active" href="{{ route('news.beranda') }}">Beranda</a></li>
-                    <li class="nav-item"><a class="nav-link " href="{{ route('news.berita') }}">Berita</a></li>
-                    <li class="nav-item"><a class="nav-link " href="{{ route('profile.edit') }}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('news.berita') }}">Berita</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('profile.edit') }}">Profil</a></li>
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post">
                             @csrf
-                            <button type="submit" class="nav-link" href="#contact">Logout</a>
+                            <button type="submit" class="btn btn-link nav-link">Logout</button>
                         </form>
                     </li>
                 </ul>
@@ -40,19 +40,21 @@
     <div id="news" class="container my-5">
         <h2 class="mb-4">Berita Terkini</h2>
         <div class="row">
-            @foreach ($news as $item)
+            @forelse ($news as $item)
                 <div class="col-md-4">
                     <div class="card mb-4">
-                        <img src="{{ $item['image']['small'] }}" class="card-img-top" alt="Gambar Berita">
+                        <img src="{{ $item['image']['small'] ?? 'default-image.jpg' }}" class="card-img-top" alt="Gambar Berita">
                         <div class="card-body">
                             <p class="text-muted">{{ \Carbon\Carbon::parse($item['isoDate'])->translatedFormat('d F Y, H:i') }}</p>
                             <h5 class="card-title">{{ $item['title'] }}</h5>
-                            <p class="card-text">{{ Str::limit($item['contentSnippet'], 100, '...') }}</p>
-                            <a href="{{ $item['link'] }}" class="btn btn-primary">Baca Selengkapnya</a>
+                            <p class="card-text">{{ \Illuminate\Support\Str::limit($item['contentSnippet'], 100, '...') }}</p>
+                            <a href="{{ $item['link'] }}" class="btn btn-primary" target="_blank">Baca Selengkapnya</a>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <p class="text-center">Tidak ada berita tersedia saat ini.</p>
+            @endforelse
         </div>
     </div>
 
